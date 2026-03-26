@@ -24,6 +24,8 @@ export const APP_HOMEPAGE_URL: string =
   process.env.APP_HOMEPAGE_URL || `http://${APP_LISTEN_HOSTNAME}:${APP_LISTEN_PORT}`
 export const APP_DISABLE_REGISTRATION: boolean = helper.isTrue(process.env.APP_DISABLE_REGISTRATION)
 export const APP_REMOVE_BRANDING: boolean = helper.isTrue(process.env.APP_REMOVE_BRANDING)
+export const APP_DISABLE_EMAIL_LOGIN: boolean = helper.isTrue(process.env.APP_DISABLE_EMAIL_LOGIN)
+export const ENABLE_SOCIAL_REGISTRATION: boolean = helper.isTrue(process.env.ENABLE_SOCIAL_REGISTRATION)
 export const ENABLE_GOOGLE_FONTS: boolean =
   process.env.ENABLE_GOOGLE_FONTS === undefined
     ? true
@@ -108,6 +110,16 @@ export const GOOGLE_LOGIN_CLIENT_ID: string = process.env.GOOGLE_LOGIN_CLIENT_ID
 export const GOOGLE_LOGIN_CLIENT_SECRET: string = process.env.GOOGLE_LOGIN_CLIENT_SECRET
 export const DISABLE_LOGIN_WITH_GOOGLE =
   helper.isEmpty(GOOGLE_LOGIN_CLIENT_ID) || helper.isEmpty(GOOGLE_LOGIN_CLIENT_SECRET)
+
+// OIDC generic social login
+export const OIDC_CLIENT_ID: string = process.env.OIDC_CLIENT_ID
+export const OIDC_CLIENT_SECRET: string = process.env.OIDC_CLIENT_SECRET
+export const OIDC_ISSUER: string = process.env.OIDC_ISSUER
+export const OIDC_DISPLAY_NAME: string = process.env.OIDC_DISPLAY_NAME || 'SSO'
+export const DISABLE_LOGIN_WITH_OIDC =
+  helper.isEmpty(OIDC_CLIENT_ID) ||
+  helper.isEmpty(OIDC_CLIENT_SECRET) ||
+  helper.isEmpty(OIDC_ISSUER)
 
 // Stripe
 export const STRIPE_VERSION: string = process.env.STRIPE_VERSION
