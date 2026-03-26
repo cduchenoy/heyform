@@ -2,6 +2,7 @@ import { Controller, Get, Header, Res } from '@nestjs/common'
 import { Response } from 'express'
 
 import {
+  APP_DISABLE_EMAIL_LOGIN,
   APP_DISABLE_REGISTRATION,
   APP_HOMEPAGE_URL,
   COOKIE_DOMAIN,
@@ -28,6 +29,7 @@ export class DashboardController {
       verifyEmailResendCooldownSeconds: Math.ceil(hs(VERIFY_EMAIL_RESEND_COOLDOWN) / 1000),
       disableLoginWithGoogle: DISABLE_LOGIN_WITH_GOOGLE,
       disableLoginWithApple: DISABLE_LOGIN_WITH_APPLE,
+      disableEmailLogin: APP_DISABLE_EMAIL_LOGIN,
       disableLoginWithOidc: helper.isEmpty(process.env.OIDC_CLIENT_ID) || helper.isEmpty(process.env.OIDC_CLIENT_SECRET) || helper.isEmpty(process.env.OIDC_ISSUER),
       oidcDisplayName: process.env.OIDC_DISPLAY_NAME || 'SSO'
     }
