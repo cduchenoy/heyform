@@ -12,7 +12,7 @@ import {
   STRIPE_PUBLISHABLE_KEY,
   VERIFY_EMAIL_RESEND_COOLDOWN
 } from '@environments'
-import { hs } from '@heyform-inc/utils'
+import { helper, hs } from '@heyform-inc/utils'
 
 @Controller()
 export class DashboardController {
@@ -27,7 +27,9 @@ export class DashboardController {
       googleRecaptchaKey: GOOGLE_RECAPTCHA_KEY,
       verifyEmailResendCooldownSeconds: Math.ceil(hs(VERIFY_EMAIL_RESEND_COOLDOWN) / 1000),
       disableLoginWithGoogle: DISABLE_LOGIN_WITH_GOOGLE,
-      disableLoginWithApple: DISABLE_LOGIN_WITH_APPLE
+      disableLoginWithApple: DISABLE_LOGIN_WITH_APPLE,
+      disableLoginWithOidc: helper.isEmpty(process.env.OIDC_CLIENT_ID) || helper.isEmpty(process.env.OIDC_CLIENT_SECRET) || helper.isEmpty(process.env.OIDC_ISSUER),
+      oidcDisplayName: process.env.OIDC_DISPLAY_NAME || 'SSO'
     }
   }
 
