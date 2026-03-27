@@ -1,4 +1,4 @@
-FROM node:18.20.0-alpine3.19 AS base
+FROM node:18.20.8-alpine3.21 AS base
 
 ARG APP_PATH=/app
 WORKDIR $APP_PATH
@@ -24,7 +24,7 @@ RUN mkdir -p $APP_PATH/packages/server/static
 RUN cp -R $APP_PATH/packages/webapp/dist/static/. $APP_PATH/packages/server/static/
 RUN cp $APP_PATH/packages/webapp/dist/index.html $APP_PATH/packages/server/view/index.html
 
-FROM node:18.20.0-alpine3.19 AS runner
+FROM node:18.20.8-alpine3.21 AS runner
 
 ARG APP_PATH=/app
 WORKDIR $APP_PATH
